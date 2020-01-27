@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+
+body{
+
+}
+
+/*  start navigation   */
+
+/* end of navigation */
+
+
+/* start landing page */
+.home-inner {
+  background-image: url("https://cdn.discordapp.com/attachments/499996617361981471/671333611521310740/christian-fregnan-TAVKURx-xLw-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 900px;
+}
+
+.caption {
+  width: 100%;
+  max-width: 100%;
+  position: absolute;
+  top: 38%;
+  z-index: 1;
+  color: black;
+  text-transform: uppercase;
+}
+.caption h1{
+  font-size: 3.8rem;
+  font-weight: 700;
+  letter-spacing: .3rem;
+  text-shadow: .1rem .1rem .8rem black;
+  padding-bottom: 1rem;
+}
+/* end landing page */
