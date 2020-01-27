@@ -5,14 +5,36 @@ body{
 }
 
 /*  start navigation   */
-
+.navbar {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: .9rem;
+  letter-spacing: .1rem;
+  background: rgba(0, 0, 0, 0.6)!important;
+}
+.navbar-brand img {
+  height: 2rem;
+  border-radius:4px;
+}
+.navbar-nav li{
+  padding-right: .7rem;
+}
+.navbar-dark .navbar-nave .nav-link{
+  color: white;
+  padding-top: .8rem;
+}
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link:hover {
+  color:white;
+}
 /* end of navigation */
 
 
 /* start landing page */
 .home-inner {
-  background-image: url("https://cdn.discordapp.com/attachments/499996617361981471/671333611521310740/christian-fregnan-TAVKURx-xLw-unsplash.jpg");
+  background-image: url("./img/Webp.net-resizeimage.jpg");
   background-repeat: no-repeat;
+  background-size: cover;
   background-position: center;
   height: 900px;
 }
@@ -32,5 +54,35 @@ body{
   letter-spacing: .3rem;
   text-shadow: .1rem .1rem .8rem black;
   padding-bottom: 1rem;
+  color: #4995ba;
+}
+.caption h3{
+  font-size: 3.8rem;
+  font-weight: 700;
+  letter-spacing: .3rem,normal;
+  text-shadow: .1rem .1rem .8rem black;
+  padding-bottom: 1rem;
+  color: #3fb2eb;
+}
+.btn-lg {
+  border-width: medium;
+  border-radius: 0;
+  padding-left: .6rem 1.3rem;
+  font-size: 1.1rem;
 }
 /* end landing page */
+
+/* start description */
+.lead {
+  letter-spacing: .1rem;
+  padding: 2%;
+  color: black;
+}
+.titledesc {
+  color: black;
+}
+.horiz{
+  width: 10%;
+  border: 1.5px solid #409999;
+}
+/* End Desription */
