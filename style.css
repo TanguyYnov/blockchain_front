@@ -189,3 +189,38 @@ a.previous {
   left: 550px;
 }
 /* end next / previous */
+/* start footer  */
+.photo{
+  border-radius: .5rem;
+}
+
+footer{
+  background-color: #40474e;
+  color: white;
+  padding: 2rem 0 0 2rem;
+  margin-top: 1rem;
+}
+footer img{
+  height: 5rem;
+  margin: 1.5rem 0;
+}
+footer a {
+  color: white;
+}
+footer a:hover{
+  color: orange;
+}
+footer svg.svg-inline--fa{
+  font-size: 1.6rem;
+}
+footer svg.svg-inline--fa{
+  font-size: 1.6rem;
+  margin-left: 1.2rem .5rem 0 0;
+}
+hr.socket{
+  width: 100%;
+}
+.hamada{
+  margin-left : 1rem;
+}
+/* end footer */
