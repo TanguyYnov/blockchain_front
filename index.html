@@ -8,6 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <title>Blocs & des chaines </title>
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./book.css">
 </head>
 <body>
   <!-- start home section -->
@@ -92,30 +93,55 @@
   </div>
   <!-- end table  -->
 <!-- start livre pdf  -->
-  <div id="resources" class="offset">
-    <section class="page-section" id="services">
-      <div class="container">
-        <div id="app">
-          <div role="toolbar" id="toolbar">
-            <div id="pager">
-              <button data-pager="prev">prev</button>
-              <button data-pager="next">next</button>
-            </div>
-            <div id="page-mode">
-              <label>Page Mode <input type="number" value="1" min="1"/></label>
-            </div>
+<div id="book" class="offset">
+  <section class="bg-white page-section" id="tabeo">
+    <div class="container zirax" id="container">
+      <div class="book-content">
+          <div class="book">
+              <div class="face-front" id="portada"></div>
+              <div class="face-back" id="trsf">
+                  <h1>Title 1</h1>
+                  <p class="pbook">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam laborum voluptatibus eaque repudiandae ullam necessitatibus, dolor ad expedita, eum praesentium vitae! Voluptate in itaque modi consequatur. Aliquid odit quisquam quibusdam!</p>
+              </div>
           </div>
-          <div id="viewport-container"><div role="main" id="viewport"></div></div>
-        </div>
+
+          <div class="book">
+              <div class="face-front">
+                  <h1>Title 2</h1>
+                  <p class="pbook">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint perferendis nemo blanditiis impedit aut soluta quia illum deserunt, vero quod ducimus placeat voluptate quidem error sequi, earum eos minima in!</p>
+              </div>
+              <div class="face-back">
+                  <h1>Title 3</h1>
+                  <p class="pbook">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam laborum voluptatibus eaque repudiandae ullam necessitatibus, dolor ad expedita, eum praesentium vitae! Voluptate in itaque modi consequatur. Aliquid odit quisquam quibusdam!</p>
+              </div>
+          </div>
+
+          <div class="book">
+              <div class="face-front">
+                  <h1>Title 4</h1>
+                  <p class="pbook">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint perferendis nemo blanditiis impedit aut soluta quia illum deserunt, vero quod ducimus placeat voluptate quidem error sequi, earum eos minima in!</p>
+              </div>
+              <div class="face-back">
+                  <h1>Title 5</h1>
+                  <p class="pbook">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam laborum voluptatibus eaque repudiandae ullam necessitatibus, dolor ad expedita, eum praesentium vitae! Voluptate in itaque modi consequatur. Aliquid odit quisquam quibusdam!</p>
+              </div>
+          </div>
+
+          <div class="book">
+              <div class="face-front">
+                  <h1>Title 6</h1>
+                  <p class="pbook">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint perferendis nemo blanditiis impedit aut soluta quia illum deserunt, vero quod ducimus placeat voluptate quidem error sequi, earum eos minima in!</p>
+              </div>
+              <div class="face-back" id="portada-back">
+              </div>
+          </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
+</div>
+<!-- end book -->
 
   <script src="js/app.js"></script>
   <script src="js/pdf.js"></script>
-  <script src="https://unpkg.com/pdfjs-dist@2.0.489/build/pdf.min.js"></script>
-  <script>
-    initPDFViewer("assets/zirax.pdf");
-  </script>
 </body>
 </html>

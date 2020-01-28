@@ -1,101 +1,48 @@
-(function() {
-  let currentPageIndex = 0;
-  let pageMode = 1;
-  let cursorIndex = Math.floor(currentPageIndex / pageMode);
-  let pdfInstance = null;
-  let totalPagesCount = 0;
+var front = document.querySelector('.face-front');
+var back = document.querySelector('.face-back');
+var flip = document.querySelector('.book-content');
+var uno = document.querySelectorAll('.book');
+var portada = document.querySelectorAll('#portada');
 
-  const viewport = document.querySelector("#viewport");
-  window.initPDFViewer = function(pdfURL) {
-    pdfjsLib.getDocument(pdfURL).then(pdf => {
-      pdfInstance = pdf;
-      totalPagesCount = pdf.numPages;
-      initPager();
-      initPageMode();
-      render();
-    });
-  };
+var contZindex = 2;
+var customZindex = 1;
 
-  function onPagerButtonsClick(event) {
-    const action = event.target.getAttribute("data-pager");
-    if (action === "prev") {
-      if (currentPageIndex === 0) {
-        return;
-      }
-      currentPageIndex -= pageMode;
-      if (currentPageIndex < 0) {
-        currentPageIndex = 0;
-      }
-      render();
-    }
-    if (action === "next") {
-      if (currentPageIndex === totalPagesCount - 1) {
-        return;
-      }
-      currentPageIndex += pageMode;
-      if (currentPageIndex > totalPagesCount - 1) {
-        currentPageIndex = totalPagesCount - 1;
-      }
-      render();
-    }
-  }
-  function initPager() {
-    const pager = document.querySelector("#pager");
-    pager.addEventListener("click", onPagerButtonsClick);
-    return () => {
-      pager.removeEventListener("click", onPagerButtonsClick);
-    };
-  }
+for (var i = 0; i < uno.length; i++) {
+	uno[i].style.zIndex = customZindex;
+	customZindex--;
 
-  function onPageModeChange(event) {
-    pageMode = Number(event.target.value);
-    render();
-  }
-  function initPageMode() {
-    const input = document.querySelector("#page-mode input");
-    input.setAttribute("max", totalPagesCount);
-    input.addEventListener("change", onPageModeChange);
-    return () => {
-      input.removeEventListener("change", onPageModeChange);
-    };
-  }
+	uno[i].addEventListener('click', function(e){
 
-  function render() {
-    cursorIndex = Math.floor(currentPageIndex / pageMode);
-    const startPageIndex = cursorIndex * pageMode;
-    const endPageIndex =
-      startPageIndex + pageMode < totalPagesCount
-        ? startPageIndex + pageMode - 1
-        : totalPagesCount - 1;
+		var tgt = e.target;
+		var unoThis = this;
 
-    const renderPagesPromises = [];
-    for (let i = startPageIndex; i <= endPageIndex; i++) {
-      renderPagesPromises.push(pdfInstance.getPage(i + 1));
-    }
+		unoThis.style.zIndex = contZindex;
+		contZindex++;
 
-    Promise.all(renderPagesPromises).then(pages => {
-      const pagesHTML = `<div style="width: ${
-        pageMode > 1 ? "50%" : "100%"
-      }"><canvas></canvas></div>`.repeat(pages.length);
-      viewport.innerHTML = pagesHTML;
-      pages.forEach(renderPage);
-    });
-  }
+		if (tgt.getAttribute('class') == 'face-front') {
+			unoThis.style.zIndex = contZindex;
+			contZindex +=20;
+			setTimeout(function(){
+				unoThis.style.transform = 'rotateY(-180deg)';
+			}, 500);
+		}
+		if (tgt.getAttribute("class") == 'face-back') {
+			unoThis.style.zIndex = contZindex;
+			contZindex +=20;
 
-  function renderPage(page) {
-    let pdfViewport = page.getViewport(1);
+			setTimeout(function(){
+				unoThis.style.transform = 'rotateY(0deg)';
+			}, 500);
+		}
 
-    const container =
-      viewport.children[page.pageIndex - cursorIndex * pageMode];
-    pdfViewport = page.getViewport(container.offsetWidth / pdfViewport.width);
-    const canvas = container.children[0];
-    const context = canvas.getContext("2d");
-    canvas.height = pdfViewport.height;
-    canvas.width = pdfViewport.width;
+		if (tgt.getAttribute('id') == 'portada') {
+			flip.classList.remove("trnsf-reset");
+			flip.classList.add("trnsf");
+		}
+		if (tgt.getAttribute('id') == 'trsf') {
+			flip.classList.remove("trnsf");
+			flip.classList.add("trnsf-reset");
+		}
 
-    page.render({
-      canvasContext: context,
-      viewport: pdfViewport
-    });
-  }
-})();
+	});
+}
