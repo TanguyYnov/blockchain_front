@@ -86,3 +86,13 @@ body{
   border: 1.5px solid #409999;
 }
 /* End Desription */
+
+/* start table */
+th{
+  color:#fff;
+}
+tr{
+  margin-top: 50%;
+}
+
+/* End table */
