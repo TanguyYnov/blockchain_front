@@ -1,269 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <title>Blocs & des chaines </title>
-  <link rel="stylesheet" href="./style.css">
-  <link rel="stylesheet" href="./book.css">
-</head>
-<body data-spy="scroll" data-target="#navbarResponsive" data-gr-c-s-loaded="true">
-  <!-- start home section -->
-  <div class="home">
-     <!-- Start navigation -->
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#"><img src="https://cdn.discordapp.com/attachments/499996617361981471/671326205689200650/Logo.PNG" alt="logo"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Blocs & des chaines </title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./book.css">
+    </head>
+    <body data-spy="scroll" data-target="#navbarResponsive" data-gr-c-s-loaded="true">
+        <!-- start home section -->
+        <div class="home" id="home">
+            <!-- Start navigation -->
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+                <a class="navbar-brand" href="#"><img src="https://cdn.discordapp.com/attachments/499996617361981471/671326205689200650/Logo.PNG" alt="logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <a href="#home" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a href="#description" class="nav-link">Description</a>
-                </li>
-                <li class="nav-item">
-                  <a href="#blockchain" class="nav-link">BC</a>
-                </li>
-                <li class="nav-item">
-                  <a href="#livre" class="nav-link">Livre</a>
-                </li>
-                <li class="nav-item">
-                  <a href="#team" class="nav-link">Team</a>
-                </li>
-                <li class="nav-item">
-                  <a href="#contact" class="nav-link">Contact</a>
-                </li>
-            </ul>
-        </div>
-      </nav>
-    <!-- End Navigation -->
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#home" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#description" class="nav-link">Description</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#blockchain" class="nav-link">Blockchain</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#livre" class="nav-link">Livre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#contact" class="nav-link">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        <!-- End Navigation -->
 
-    <!-- Start Landing page section -->
-    <div class="landing">
-        <div class="home-wrap">
-            <div class="home-inner">
+        <!-- Start Landing page section -->
+        <div class="landing">
+            <div class="home-wrap">
+                <div class="home-inner">
+                </div>
             </div>
         </div>
-    </div>
 
 
-    <div class="caption text-center ">
-        <h1>Des blocs & des chaines </h1>
-        <h3> find out more</h3>
-        <a href="#description" class="btn btn btn-primary btn-lg">START NAVIGATING</a>
-    </div>
-    <!-- End landing page section -->
-  </div>
-  <!-- end home section -->
-
-  <!-- start Description section -->
-  <div id="description" class="offset">
-
-  <div class="col-12 narrow text-center mt-5">
-    <h1 class="titledesc"><strong>Description</strong></h1>
-      <hr class="horiz"/>
-      <p class="lead container">Ce projet est initié par Ynov Nantes Campus, fièrement propulsé par "Des Blocs & des Chaînes". Ce projet à pour but de réalisé une blockchain avec des fonctions de hachage (SHA-256) visible dans un tableau. Avec ce tableau, on va récupérer des informations sur la blockchain afin d'afficher le livre imposé "Bel-Ami" de Guy de Maupassant,ce projet à été réalisé avec la participation de Yavuz PUSKULLU en Administrateur réseau, Hugo HUET en Développeur back-end, Ilyass GAMRA en Développeur front-end, et Tanguy PELLERIN en Chef de Projet</p>
-  </div>
-  </div>
-  <!-- end Description section -->
-  <!-- start table -->
-  <div id="taable" class="offset">
-  <section class="bg-light page-section" id="tabeo">
-    <div class="container">
-      <table class="table table-striped">
-        <tr class="bg-info">
-          <th>Numero Block</th>
-          <th>Hashage</th>
-          <th>IdContributeur</th>
-          <th>Nonce</th>
-        </tr>
-        <tbody id="myTable">
-
-        </tbody>
-      </table>
-    </div>
-    <div class="text-center">
-        <span class="btn btn-primary" id="tab_preced">Precedent</span>
-        <span class="btn btn-primary" id="tab_suiv">Suivant</span>
-    </div>
-  </section>
-  </div>
-  <!-- end table  -->
-<!-- start livre pdf  -->
-<div class="livre">
-    <div class="container" style="height: 500px;">
-        <div class="row">
-            <div class="col-6 page" id="book_left"></div>
-            <div class="col-6 page" id="book_right"></div>
+        <div class="caption text-center ">
+            <h1>Des blocs & des chaines </h1>
+            <h3> find out more</h3>
+            <a href="#description" class="btn btn btn-primary btn-lg">START NAVIGATING</a>
         </div>
-    </div>
-    <div class="text-center">
-        <span class="btn btn-primary" id="page_preced">Precedent</span>
-        <span class="btn btn-primary" id="page_suiv">Suivant</span>
-    </div>
-</div>
-<!-- end book -->
+        <!-- End landing page section -->
+        </div>
+        <!-- end home section -->
 
-<!-- start contact -->
-<div id="contact" class="offset">
-<footer>
-  <div class="row justify-content-center">
-    <div class="col-md5 text-center">
-      <img src="https://cdn.discordapp.com/attachments/499996617361981471/671326205689200650/Logo.PNG" class="photo" alt="logo">
-      <p>ce projet à été réalisé avec la participation de Yavuz PUSKULLU en Administrateur réseau,<br>Hugo HUET en Développeur back-end,<br>Ilyass GAMRA en Développeur front-end, et Tanguy PELLERIN en Chef de Projet</p>
-      <strong>Contact</strong>
-      <p>+33 x xx xx xx xx <br>team@dbdc.com</p>
-      <a href="#" target="_blank"><i class="fab fa-facebook-square"></i></a>
-      <a href="#"><i class="fab fa-twitter-square hamada"></i></a>
-      <a href="#" class="fab fa-instagram hamada"></a>
-    </div>
-    <hr class="socket">
-    &copy; Des blocs et des chaines <sub>2020</sub>
-  </div>
-</footer>
-</div>
-<!-- end contact -->
-<script>
-    var min = 0;
-    var max = 10;
-    var chain_arr = [];
-    var table = document.getElementById('myTable');
-    var book_left = document.getElementById('book_left');
-    var book_right = document.getElementById('book_right');
-    var pages_arr = [];
-    var page_arr_display;
-    
-    var rendu_livre = 0;
+        <!-- start Description section -->
+        <div id="description" class="offset">
+            <div class="col-12 narrow text-center mt-5">
+                <h1 class="titledesc"><strong>Description</strong></h1>
+                <hr class="horiz"/>
+                <p class="lead container">Ce projet est initié par Ynov Nantes Campus, fièrement propulsé par "Des Blocs & des Chaînes". Ce projet à pour but de réalisé une blockchain avec des fonctions de hachage (SHA-256) visible dans un tableau. Avec ce tableau, on va récupérer des informations sur la blockchain afin d'afficher le livre imposé "Bel-Ami" de Guy de Maupassant,ce projet à été réalisé avec la participation de Yavuz PUSKULLU en Administrateur réseau, Hugo HUET en Développeur back-end, Ilyass GAMRA en Développeur front-end, et Tanguy PELLERIN en Chef de Projet</p>
+            </div>
+        </div>
+        <!-- end Description section -->
+        <!-- start table -->
+        <div id="blockchain" class="offset">
+            <section class="bg-light page-section" id="tabeo">
+                <div class="container">
+                    <table class="table table-striped">
+                        <tr class="bg-info">
+                            <th>Numero Block</th>
+                            <th>Hashage</th>
+                            <th>IdContributeur</th>
+                            <th>Nonce</th>
+                        </tr>
+                        <tbody id="myTable"></tbody>
+                    </table>
+                </div>
+                <div class="text-center">
+                    <span class="btn btn-primary" id="tab_preced">Precedent</span>
+                    <span class="btn btn-primary" id="tab_suiv">Suivant</span>
+                </div>
+            </section>
+        </div>
+        <!-- end table  -->
+        <!-- start livre pdf  -->
+        <div id="livre">
+            <div class="container" style="height: 500px;">
+                <div class="row">
+                    <div class="col-6 page" id="book_left"></div>
+                    <div class="col-6 page" id="book_right"></div>
+                </div>
+            </div>
+            <div class="text-center">
+                <span class="btn btn-primary" id="page_preced">Precedent</span>
+                <span class="btn btn-primary" id="page_suiv">Suivant</span>
+            </div>
+        </div>
+        <!-- end book -->
 
-    $( document ).ready(function() {
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == XMLHttpRequest.DONE) {
-                book_is_set = false;
-                chain_obj = JSON.parse(xhr.responseText);
-                chain_arr = chain_obj.chain;
-                chain_arr.forEach((block, key) => {
-                    row_table = ` <tr>
-                                <td>${block.num_bloc}</td>
-                                <td>${block.hash}</td>
-                                <td>${block.id_contributeur}</td>
-                                <td>${block.nonce}</td>
-                            </tr>`
-                    if (parseInt(block.num_bloc) >= min && parseInt(block.num_bloc) < max) {
-                        table.innerHTML += row_table
+        <!-- start contact -->
+        <footer>
+            <div id="contact" class="offset"></div>
+                <div class="row justify-content-center">
+                    <div class="col-md5 text-center">
+                        <img src="https://cdn.discordapp.com/attachments/499996617361981471/671326205689200650/Logo.PNG" class="photo" alt="logo">
+                        <p>ce projet à été réalisé avec la participation de Yavuz PUSKULLU en Administrateur réseau,<br>Hugo HUET en Développeur back-end,<br>Ilyass GAMRA en Développeur front-end, et Tanguy PELLERIN en Chef de Projet</p>
+                        <strong>Contact</strong>
+                        <p>+33 x xx xx xx xx <br>team@dbdc.com</p>
+                        <a href="#" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                        <a href="#"><i class="fab fa-twitter-square hamada"></i></a>
+                        <a href="#" class="fab fa-instagram hamada"></a>
+                    </div>
+                    <hr class="socket">
+                    &copy; Des blocs et des chaines <sub>2020</sub>
+                </div>
+            </div>
+        </footer>
+        <!-- end contact -->
+        <script>
+            var min = 0;
+            var max = 10;
+            var chain_arr = [];
+            var table = document.getElementById('myTable');
+            var book_left = document.getElementById('book_left');
+            var book_right = document.getElementById('book_right');
+            var pages_arr = [];
+            var page_arr_display;
+
+            var rendu_livre = 0;
+
+            $( document ).ready(function() {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == XMLHttpRequest.DONE) {
+                        book_is_set = false;
+                        chain_obj = JSON.parse(xhr.responseText);
+                        chain_arr = chain_obj.chain;
+                        chain_arr.forEach((block, key) => {
+                            row_table = ` <tr>
+                                        <td>${block.num_bloc}</td>
+                                        <td>${block.hash}</td>
+                                        <td>${block.id_contributeur}</td>
+                                        <td>${block.nonce}</td>
+                                    </tr>`
+                            if (parseInt(block.num_bloc) >= min && parseInt(block.num_bloc) < max) {
+                                table.innerHTML += row_table
+                            }
+
+                            block.transactions.forEach(page => {
+                                pages_arr.push(page.texte);
+                            })
+                        });
+
+                        book_left.innerHTML = pages_arr[0];
+                        book_right.innerHTML = pages_arr[1];
+                        page_arr_display = 0;
                     }
+                }
+                xhr.open('GET', 'http://localhost:5000/chain', true);
+                xhr.send(null);
+            });
 
-                    block.transactions.forEach(page => {
-                        pages_arr.push(page.texte);
-                    })
-                });
+            $( "#tab_preced" ).click(function() {
+                if (min-10 >= 0 && max-10 >= 10) {
+                    min -= 10;
+                    max -= 10;
+                }
+                actualize_table();
+            });
 
-                book_left.innerHTML = pages_arr[0];
-                book_right.innerHTML = pages_arr[1];
-                page_arr_display = 0;
+            $( "#tab_suiv" ).click(function() {
+                if (min+10 < chain_arr.length && max < chain_arr.length) {
+                    min += 10;
+                    max += 10;
+                }
+                actualize_table()
+            });
+
+            function actualize_table(){
+                table.innerHTML = "";
+                for (let i = min; i < max; i++) {
+                    row_table = ` <tr>
+                                <td>${chain_arr[i].num_bloc}</td>
+                                <td>${chain_arr[i].hash}</td>
+                                <td>${chain_arr[i].id_contributeur}</td>
+                                <td>${chain_arr[i].nonce}</td>
+                            </tr>`
+                    table.innerHTML += row_table
+                }
             }
-        }
-        xhr.open('GET', 'http://localhost:5000/chain', true);
-        xhr.send(null);
-    });
 
-    $( "#tab_preced" ).click(function() {
-        if (min-10 >= 0 && max-10 >= 10) {
-            min -= 10;
-            max -= 10;
-        }
-        actualize_table();
-    });
+            $( "#page_preced" ).click(function() {
+                if (page_arr_display-2 >= 0) {
+                    book_left.innerHTML = pages_arr[page_arr_display-2];
+                    book_right.innerHTML = pages_arr[page_arr_display-1];
+                    page_arr_display = page_arr_display-2;
+                }
+            });
 
-    $( "#tab_suiv" ).click(function() {
-        if (min+10 < chain_arr.length && max < chain_arr.length) {
-            min += 10;
-            max += 10;
-        }
-        actualize_table()
-    });
-
-    function actualize_table(){
-        table.innerHTML = "";
-        for (let i = min; i < max; i++) {
-            row_table = ` <tr>
-                        <td>${chain_arr[i].num_bloc}</td>
-                        <td>${chain_arr[i].hash}</td>
-                        <td>${chain_arr[i].id_contributeur}</td>
-                        <td>${chain_arr[i].nonce}</td>
-                    </tr>`
-            table.innerHTML += row_table
-        }
-    }
-
-    $( "#page_preced" ).click(function() {
-        if (page_arr_display-2 >= 0) {
-            book_left.innerHTML = pages_arr[page_arr_display-2];
-            book_right.innerHTML = pages_arr[page_arr_display-1];
-            page_arr_display = page_arr_display-2;
-        }
-    });
-
-    $( "#page_suiv" ).click(function() {
-        if (page_arr_display+2 <= pages_arr.length) {
-            book_left.innerHTML = pages_arr[page_arr_display+2];
-            book_right.innerHTML = pages_arr[page_arr_display+3];
-            page_arr_display = page_arr_display+2;
-        }
-    });
-
-    function next_pages(){
-        chain_arr[block_display]
-
-
-        transaction_first = chain_arr[block_display].transactions[page_display+1];
-        transaction_second = chain_arr[block_display].transactions[page_display+2];
-        if (transaction_first != undefined) {
-            book_left.innerHTML = transaction_first.texte;
-            if (transaction_second != undefined) {
-                book_right.innerHTML = transaction_second.texte;
-            }else{
-                block_display++;
-                page_display = 0;
-                next_pages();
-            }
-        }else{
-            block_display++;
-            page_display = 0;
-            next_pages();
-        }
-    }
-
-    function before_pages(){
-        console.log(block_display)
-        transaction_first = chain_arr[block_display].transactions[page_display-1];
-        transaction_second = chain_arr[block_display].transactions[page_display-2];
-        if (transaction_first != undefined && block_display != 0 && page_display != 1) {
-            book_left.innerHTML = transaction_first.texte;
-            if (transaction_second != undefined) {
-                book_right.innerHTML = transaction_second.texte;
-            }else{
-                block_display--;
-                page_display = 4;
-                before_pages();
-            }
-        }else{
-            if (block_display > 0) {
-                block_display--;
-            }
-            if (page_display == 0 ) {
-                page_display = 4;
-                before_pages();
-            }
-        }
-    }
-</script>
-</body>
+            $( "#page_suiv" ).click(function() {
+                if (page_arr_display+2 <= pages_arr.length) {
+                    book_left.innerHTML = pages_arr[page_arr_display+2];
+                    book_right.innerHTML = pages_arr[page_arr_display+3];
+                    page_arr_display = page_arr_display+2;
+                }
+            });
+        </script>
+    </body>
 </html>
