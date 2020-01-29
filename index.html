@@ -79,8 +79,8 @@
     <div class="container">
       <table class="table table-striped">
         <tr class="bg-info">
-          <th>Id</th>
-          <th>Hash</th>
+          <th>Numero Block</th>
+          <th>Hashage</th>
           <th>IdContributeur</th>
           <th>Nonce</th>
         </tr>
@@ -89,6 +89,10 @@
         </tbody>
       </table>
     </div>
+    <div class="text-center">
+        <span class="btn btn-primary" id="tab_preced">Precedent</span>
+        <span class="btn btn-primary" id="tab_suiv">Suivant</span>
+    </div>
   </section>
   </div>
   <!-- end table  -->
@@ -96,7 +100,6 @@
 <div id="book" class="offset">
   <section class="bg-white page-section" id="tabeo">
     <div class="container zirax" id="container">
-      <a href="#" class="previous">&laquo; Previous</a>
       <div class="book-content">
           <div class="book">
               <div class="face-front" id="portada"></div>
@@ -108,10 +111,10 @@
 
           <div class="book">
               <div class="face-front">
-                  <p class="pbook">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint perferendis nemo blanditiis impedit aut soluta quia illum deserunt, vero quod ducimus placeat voluptate quidem error sequi, earum eos minima in!</p>
+                  <p class="pbook">coucou 1Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint perferendis nemo blanditiis impedit aut soluta quia illum deserunt, vero quod ducimus placeat voluptate quidem error sequi, earum eos minima in!</p>
               </div>
               <div class="face-back">
-                  <p class="pbook">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam laborum voluptatibus eaque repudiandae ullam necessitatibus, dolor ad expedita, eum praesentium vitae! Voluptate in itaque modi consequatur. Aliquid odit quisquam quibusdam!</p>
+                  <p class="pbook">coucou 2Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam laborum voluptatibus eaque repudiandae ullam necessitatibus, dolor ad expedita, eum praesentium vitae! Voluptate in itaque modi consequatur. Aliquid odit quisquam quibusdam!</p>
               </div>
           </div>
 
@@ -132,13 +135,90 @@
               </div>
           </div>
       </div>
-      <a href="#" class="next">Next &raquo;</a>
+    </div>
+    <div class="text-center mb-5">
+        <span class="btn btn-primary" id="livre_preced">Precedent</span>
+        <span class="btn btn-primary" id="livre_suiv">Suivant</span>
     </div>
   </section>
 </div>
 <!-- end book -->
 
-  <script src="js/app.js"></script>
-  <script src="js/pdf.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/pdf.js"></script>
+    <script>
+        var min = 0;
+        var max = 10;
+        var chain_arr = [];
+        var table = document.getElementById('myTable')
+
+        $( document ).ready(function() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    chain_obj = JSON.parse(xhr.responseText);
+                    chain_arr = chain_obj.chain;
+                    chain_arr.forEach(block => {
+                        row = ` <tr>
+                                    <td>${block.num_bloc}</td>
+                                    <td>${block.hash}</td>
+                                    <td>${block.id_contributeur}</td>
+                                    <td>${block.nonce}</td>
+                                </tr>`
+                        if (parseInt(block.num_bloc) >= min && parseInt(block.num_bloc) < max) {
+                            table.innerHTML += row
+                        }
+                    });
+                }
+            }
+            xhr.open('GET', 'http://localhost:5000/chain', true);
+            xhr.send(null);
+        });
+
+        $( "#tab_preced" ).click(function() {
+            if (min-10 >= 0 && max-10 >= 10) {
+                min -= 10;
+                max -= 10;
+            }
+            actualize_table();
+        });
+
+        $( "#tab_suiv" ).click(function() {
+            if (min+10 < chain_arr.length && max < chain_arr.length) {
+                min += 10;
+                max += 10;
+            }
+            actualize_table()
+        });
+
+        function actualize_table(){
+            table.innerHTML = "";
+            for (let i = min; i < max; i++) {
+                row = ` <tr>
+                            <td>${chain_arr[i].num_bloc}</td>
+                            <td>${chain_arr[i].hash}</td>
+                            <td>${chain_arr[i].id_contributeur}</td>
+                            <td>${chain_arr[i].nonce}</td>
+                        </tr>`
+                table.innerHTML += row
+            }
+        }
+
+        $( "#tab_preced" ).click(function() {
+            if (min-10 >= 0 && max-10 >= 10) {
+                min -= 10;
+                max -= 10;
+            }
+            actualize_table();
+        });
+
+        $( "#tab_suiv" ).click(function() {
+            if (min+10 < chain_arr.length && max < chain_arr.length) {
+                min += 10;
+                max += 10;
+            }
+            actualize_table()
+        });
+  </script>
 </body>
 </html>
