@@ -28,6 +28,13 @@ var myArray = [
     'id_contributeur':'3sMclDfSGyOuTLwnxnwlhyrsa78nG2SIajcHT55K',
     'nonce':'44'},
 ]
+let info = []
+fetch("./bookpack.json").then(
+  res => {
+    return res.json
+  })
+
+
 
 buildTable(myArray)
 
