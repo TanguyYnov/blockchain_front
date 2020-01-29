@@ -3,7 +3,6 @@ var back = document.querySelector('.face-back');
 var flip = document.querySelector('.book-content');
 var uno = document.querySelectorAll('.book');
 var portada = document.querySelectorAll('#portada');
-
 var contZindex = 2;
 var customZindex = 1;
 
