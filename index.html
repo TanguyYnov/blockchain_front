@@ -97,50 +97,17 @@
   </div>
   <!-- end table  -->
 <!-- start livre pdf  -->
-<div id="book" class="offset">
-  <section class="bg-white page-section" id="tabeo">
-    <div class="container zirax" id="container">
-      <div class="book-content">
-          <div class="book">
-              <div class="face-front" id="portada"></div>
-              <div class="face-back" id="trsf">
-                  <h1>Title 1</h1>
-                  <p class="pbook">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam laborum voluptatibus eaque repudiandae ullam necessitatibus, dolor ad expedita, eum praesentium vitae! Voluptate in itaque modi consequatur. Aliquid odit quisquam quibusdam!</p>
-              </div>
-          </div>
-
-          <div class="book">
-              <div class="face-front">
-                  <p class="pbook">coucou 1Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint perferendis nemo blanditiis impedit aut soluta quia illum deserunt, vero quod ducimus placeat voluptate quidem error sequi, earum eos minima in!</p>
-              </div>
-              <div class="face-back">
-                  <p class="pbook">coucou 2Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam laborum voluptatibus eaque repudiandae ullam necessitatibus, dolor ad expedita, eum praesentium vitae! Voluptate in itaque modi consequatur. Aliquid odit quisquam quibusdam!</p>
-              </div>
-          </div>
-
-          <div class="book">
-              <div class="face-front">
-                  <p class="pbook">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint perferendis nemo blanditiis impedit aut soluta quia illum deserunt, vero quod ducimus placeat voluptate quidem error sequi, earum eos minima in!</p>
-              </div>
-              <div class="face-back">
-                  <p class="pbook">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam laborum voluptatibus eaque repudiandae ullam necessitatibus, dolor ad expedita, eum praesentium vitae! Voluptate in itaque modi consequatur. Aliquid odit quisquam quibusdam!</p>
-              </div>
-          </div>
-
-          <div class="book">
-              <div class="face-front">
-                  <p class="pbook">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint perferendis nemo blanditiis impedit aut soluta quia illum deserunt, vero quod ducimus placeat voluptate quidem error sequi, earum eos minima in!</p>
-              </div>
-              <div class="face-back" id="portada-back">
-              </div>
-          </div>
-      </div>
+<div class="livre">
+    <div class="container" style="height: 500px;">
+        <div class="row">
+            <div class="col-6 page" id="book_left"></div>
+            <div class="col-6 page" id="book_right"></div>
+        </div>
     </div>
-    <div class="text-center mb-5">
-        <span class="btn btn-primary" id="livre_preced">Precedent</span>
-        <span class="btn btn-primary" id="livre_suiv">Suivant</span>
+    <div class="text-center">
+        <span class="btn btn-primary" id="page_preced">Precedent</span>
+        <span class="btn btn-primary" id="page_suiv">Suivant</span>
     </div>
-  </section>
 </div>
 <!-- end book -->
 
@@ -163,81 +130,140 @@
 </footer>
 </div>
 <!-- end contact -->
-<script src="js/app.js"></script>
-    <script src="js/pdf.js"></script>
-    <script>
-        var min = 0;
-        var max = 10;
-        var chain_arr = [];
-        var table = document.getElementById('myTable')
+<script>
+    var min = 0;
+    var max = 10;
+    var chain_arr = [];
+    var table = document.getElementById('myTable');
+    var book_left = document.getElementById('book_left');
+    var book_right = document.getElementById('book_right');
+    var pages_arr = [];
+    var page_arr_display;
+    
+    var rendu_livre = 0;
 
-        $( document ).ready(function() {
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == XMLHttpRequest.DONE) {
-                    chain_obj = JSON.parse(xhr.responseText);
-                    chain_arr = chain_obj.chain;
-                    chain_arr.forEach(block => {
-                        row = ` <tr>
-                                    <td>${block.num_bloc}</td>
-                                    <td>${block.hash}</td>
-                                    <td>${block.id_contributeur}</td>
-                                    <td>${block.nonce}</td>
-                                </tr>`
-                        if (parseInt(block.num_bloc) >= min && parseInt(block.num_bloc) < max) {
-                            table.innerHTML += row
-                        }
-                    });
-                }
-            }
-            xhr.open('GET', 'http://localhost:5000/chain', true);
-            xhr.send(null);
-        });
+    $( document ).ready(function() {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == XMLHttpRequest.DONE) {
+                book_is_set = false;
+                chain_obj = JSON.parse(xhr.responseText);
+                chain_arr = chain_obj.chain;
+                chain_arr.forEach((block, key) => {
+                    row_table = ` <tr>
+                                <td>${block.num_bloc}</td>
+                                <td>${block.hash}</td>
+                                <td>${block.id_contributeur}</td>
+                                <td>${block.nonce}</td>
+                            </tr>`
+                    if (parseInt(block.num_bloc) >= min && parseInt(block.num_bloc) < max) {
+                        table.innerHTML += row_table
+                    }
 
-        $( "#tab_preced" ).click(function() {
-            if (min-10 >= 0 && max-10 >= 10) {
-                min -= 10;
-                max -= 10;
-            }
-            actualize_table();
-        });
+                    block.transactions.forEach(page => {
+                        pages_arr.push(page.texte);
+                    })
+                });
 
-        $( "#tab_suiv" ).click(function() {
-            if (min+10 < chain_arr.length && max < chain_arr.length) {
-                min += 10;
-                max += 10;
-            }
-            actualize_table()
-        });
-
-        function actualize_table(){
-            table.innerHTML = "";
-            for (let i = min; i < max; i++) {
-                row = ` <tr>
-                            <td>${chain_arr[i].num_bloc}</td>
-                            <td>${chain_arr[i].hash}</td>
-                            <td>${chain_arr[i].id_contributeur}</td>
-                            <td>${chain_arr[i].nonce}</td>
-                        </tr>`
-                table.innerHTML += row
+                book_left.innerHTML = pages_arr[0];
+                book_right.innerHTML = pages_arr[1];
+                page_arr_display = 0;
             }
         }
+        xhr.open('GET', 'http://localhost:5000/chain', true);
+        xhr.send(null);
+    });
 
-        $( "#tab_preced" ).click(function() {
-            if (min-10 >= 0 && max-10 >= 10) {
-                min -= 10;
-                max -= 10;
-            }
-            actualize_table();
-        });
+    $( "#tab_preced" ).click(function() {
+        if (min-10 >= 0 && max-10 >= 10) {
+            min -= 10;
+            max -= 10;
+        }
+        actualize_table();
+    });
 
-        $( "#tab_suiv" ).click(function() {
-            if (min+10 < chain_arr.length && max < chain_arr.length) {
-                min += 10;
-                max += 10;
+    $( "#tab_suiv" ).click(function() {
+        if (min+10 < chain_arr.length && max < chain_arr.length) {
+            min += 10;
+            max += 10;
+        }
+        actualize_table()
+    });
+
+    function actualize_table(){
+        table.innerHTML = "";
+        for (let i = min; i < max; i++) {
+            row_table = ` <tr>
+                        <td>${chain_arr[i].num_bloc}</td>
+                        <td>${chain_arr[i].hash}</td>
+                        <td>${chain_arr[i].id_contributeur}</td>
+                        <td>${chain_arr[i].nonce}</td>
+                    </tr>`
+            table.innerHTML += row_table
+        }
+    }
+
+    $( "#page_preced" ).click(function() {
+        if (page_arr_display-2 >= 0) {
+            book_left.innerHTML = pages_arr[page_arr_display-2];
+            book_right.innerHTML = pages_arr[page_arr_display-1];
+            page_arr_display = page_arr_display-2;
+        }
+    });
+
+    $( "#page_suiv" ).click(function() {
+        if (page_arr_display+2 <= pages_arr.length) {
+            book_left.innerHTML = pages_arr[page_arr_display+2];
+            book_right.innerHTML = pages_arr[page_arr_display+3];
+            page_arr_display = page_arr_display+2;
+        }
+    });
+
+    function next_pages(){
+        chain_arr[block_display]
+
+
+        transaction_first = chain_arr[block_display].transactions[page_display+1];
+        transaction_second = chain_arr[block_display].transactions[page_display+2];
+        if (transaction_first != undefined) {
+            book_left.innerHTML = transaction_first.texte;
+            if (transaction_second != undefined) {
+                book_right.innerHTML = transaction_second.texte;
+            }else{
+                block_display++;
+                page_display = 0;
+                next_pages();
             }
-            actualize_table()
-        });
-  </script>
+        }else{
+            block_display++;
+            page_display = 0;
+            next_pages();
+        }
+    }
+
+    function before_pages(){
+        console.log(block_display)
+        transaction_first = chain_arr[block_display].transactions[page_display-1];
+        transaction_second = chain_arr[block_display].transactions[page_display-2];
+        if (transaction_first != undefined && block_display != 0 && page_display != 1) {
+            book_left.innerHTML = transaction_first.texte;
+            if (transaction_second != undefined) {
+                book_right.innerHTML = transaction_second.texte;
+            }else{
+                block_display--;
+                page_display = 4;
+                before_pages();
+            }
+        }else{
+            if (block_display > 0) {
+                block_display--;
+            }
+            if (page_display == 0 ) {
+                page_display = 4;
+                before_pages();
+            }
+        }
+    }
+</script>
 </body>
 </html>
